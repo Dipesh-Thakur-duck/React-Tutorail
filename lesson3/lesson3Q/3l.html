@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      React Lesson 3: QL
+    </title>
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/chatbot.js"></script>
+
+    <script type="text/babel">
+      function ChatMessage({message, sender}){
+        return(
+          <div>
+            {
+              sender === 'robot' && (
+                <img src={`../${sender}.png`} width='50' />
+              )
+            }
+            {message}
+            {
+              sender === 'user' && (
+                <img src={`../${sender}.png`} width="50" />
+              )
+            }
+          </div>
+        );
+      }
+      function ChatInput({
+        chatMessages,
+        setChatMessages,
+        inputText,
+        setInputText,
+        setIsLoading,
+        isLoading
+      }){
+        function saveInputText(event){
+          setInputText(event.target.value)
+        }
+        async function sendMessage(){
+          if (isLoading) return;
+          if (inputText === '') return;
+          const newChatMessages = [
+            ...chatMessages,
+            {
+              message:inputText,
+              sender:'user',
+              id:crypto.randomUUID()
+            }
+          ];
+          setChatMessages(newChatMessages);
+          setInputText('');
+          setIsLoading(true);
+
+          const response = await Chatbot.getResponseAsync(inputText);
+          setChatMessages([
+            ...newChatMessages,
+            {
+              message:response,
+              sender:'robot',
+              id:crypto.randomUUID()
+            }
+          ]);
+          setIsLoading(false);
+        }
+        return(
+          <>
+            <input 
+              placeholder="Send a message to Chatbot"
+              size="30"
+              onChange={saveInputText}
+              value={inputText}
+            />
+            <button onClick={
+              sendMessage
+            } disabled={isLoading}>Send Message</button>
+          </>
+        )
+      }
+      function ChatMessages({chatMessages, isLoading}){
+        return(
+          <>
+            {
+              chatMessages.map((chatMessage)=>{
+                return(
+                  <ChatMessage
+                    message={chatMessage.message}
+                    sender={chatMessage.sender}
+                    key={chatMessage.id}
+                  />
+                );
+              })
+            }
+            {
+              isLoading && (
+                <ChatMessage
+                  message="Loading..."
+                  sender="robot"
+                />
+              )
+            }
+          </>
+        );
+      }
+
+      function App(){
+        const [inputText, setInputText] = React.useState('');
+        const [isLoading, setIsLoading] = React.useState(false);
+        const [chatMessages, setChatMessages] = React.useState([])
+        return(
+          <>
+          <ChatInput 
+            value={inputText}
+            chatMessages={chatMessages}
+            setChatMessages={setChatMessages}
+            inputText={inputText}
+            setInputText={setInputText}
+            setIsLoading={setIsLoading}
+            isLoading={isLoading}
+          />
+          <ChatMessages 
+            chatMessages={chatMessages}
+            isLoading={isLoading}
+          />
+          </>
+        )
+      }
+      const container = document.querySelector('.js-container');
+      ReactDOM.createRoot(container).render(<App />);
+    </script>
+  </body>
+</html>
