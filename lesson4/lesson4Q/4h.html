@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>React Lesson 4: QH</title>
+</head>
+<body>
+  <div class="js-container"></div>
+
+  <script src="https://unpkg.com/supersimpledev/react.js"></script>
+  <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+  <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+
+  <script src="https://unpkg.com/supersimpledev/dayjs.js"></script>
+
+  <script type="text/babel">
+
+    function App(){
+      const [number, setNumber] = React.useState(0);
+      let autoClickBtn = React.useRef(false);
+      let intervalId = React.useRef(null);
+
+      function increaseNumber(){
+        setNumber(prevNumber => prevNumber + 1);
+        console.log('Hello');
+      }
+      function resetNumber(){
+        setNumber(0);
+      }
+      function autoClick(){
+        autoClickBtn.current = !autoClickBtn.current;
+        if(autoClickBtn.current){
+          const id = setInterval(()=>{
+            increaseNumber();
+          },1000);
+          intervalId.current = id;
+        }else{
+          clearInterval(intervalId.current);
+        }
+      }
+      return (
+        <>
+          <button onClick={increaseNumber}>Clicked {number} {number > 1? 'times':'time'}</button>
+          <button onClick={resetNumber}>Reset</button>
+          <button onClick={autoClick}>Auto Click</button>
+        </>
+      )
+    }
+    const container = document.querySelector('.js-container');
+    ReactDOM.createRoot(container).render(<App />);
+  </script>
+</body>
+</html>
