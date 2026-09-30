@@ -1,0 +1,40 @@
+.title{
+  font-family:Arial;
+}
+.emailEl{
+  display:block;
+  padding:10px;
+  margin-bottom:10px;
+  border-radius:5px;
+  border-width:1px;
+}
+.passwordEl{
+  padding:10px;
+  margin-bottom:10px;
+  border-radius:5px;
+  border-width:1px;
+}
+.emailEl:focus, .passwordEl:focus{
+  outline: 1px solid #0077B5;
+}
+.btn{
+  background-color:#0077B5;
+  color:white;
+  border:none;
+  padding:10px 15px;
+  border-radius:5px;
+}
+.btn-container{
+  display:flex;
+  gap:10px;
+}
+.password-container{
+  display:flex;
+  align-items:start;
+  gap:10px;
+}
+.show-btn{
+  padding:8px 10px;
+  border-radius:5px;
+  border-width:1px;
+}
