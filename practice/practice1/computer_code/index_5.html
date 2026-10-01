@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>State</title>
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+
+    <script type="text/babel">
+      function ChatMessage({sender, message}){
+        return <div>{sender}:{message}</div>
+      }
+      function ChatInput(){
+        return (
+          <div>
+            <input placeholder="Send chatbot a message" size="30"/>
+            <button>Send</button>
+          </div>
+        )
+      }
+      function App(){
+        const chatMessages=[
+          {user:'user', message:'Hello', key:'id1'},
+          {user:'robot', message:'Hi! How can I help you?', key:'id2'}
+        ];
+        const [message, setMessage] = React.useState(chatMessages);
+
+        function sendMessage(){
+          setMessage(
+            [...message, {user:'user', message:'roll a dice', key:crypto.randomUUID()}]
+          )
+        }
+        return(
+          <div>
+            <button onClick={sendMessage}>Message</button>
+            {
+              message.map((message)=>{
+                return <ChatMessage 
+                  sender={message.user}
+                  message={message.message}
+                  key={message.key}
+                />
+              })
+            }
+            <ChatInput />
+          </div>
+        )
+      }
+
+      const container = document.querySelector('.js-container');
+      ReactDOM.createRoot(container).render(<App />);
+    </script>
+  </body>
+</html>

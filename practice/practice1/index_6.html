@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input and events</title>
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+
+    <script type="text/babel">
+      function ChatInput({messages, setMessages}){
+        const [inputText, saveInputText] = React.useState('');
+        function inputChange(event){
+          saveInputText(event.target.value);
+        }
+        function putMessage(){
+          setMessages([
+            ...messages, {
+              sender:'user',
+              message:inputText,
+              key:crypto.randomUUID()
+            }
+          ])
+          saveInputText('');
+        }
+        return (
+          <>
+            <input
+              placeholder="Ask the chatbot"
+              size="30"
+              onChange={inputChange}
+              value={inputText}
+            />
+            <button onClick={putMessage}>Send</button>
+          </>
+        )
+      }
+      function ChatMessage({sender, message}){
+        return <p>{sender}:{message}</p>
+      }
+      function App(){
+        const [chatMessages, setChatMessages] = React.useState([]);
+        return (
+          <div>
+            {
+              chatMessages.map((message)=>{
+                return (
+                  <ChatMessage 
+                    sender='user'
+                    message={message.message}
+                    key={crypto.randomUUID()}
+                  />
+                )  
+              })
+            }
+            <ChatInput 
+                messages = {chatMessages}
+                setMessages = {setChatMessages}
+              />
+          </div>
+        )
+      }
+      const container = document.querySelector('.js-container');
+      ReactDOM.createRoot(container).render(<App />);
+    </script>
+  </body>
+</html>

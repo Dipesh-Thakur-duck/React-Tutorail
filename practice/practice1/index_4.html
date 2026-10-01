@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lists with .map()</title>
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+
+    <script type="text/babel">
+      function ChatMessage({message,user}){
+        return <p>{user}:{message}</p>;
+      }
+      function ChatInput(){
+        return(
+          <div>
+            <input placeholder="Send you message to chatbot" size="30" />
+            <button>Send</button>
+          </div>
+        )
+      }
+      function App(){
+        const messages = [
+          {message:'Hello', user:'user', id:'id1'},
+          {message:'Hi! How can I help you?', user:'robot', id:'id2'}
+        ];
+        return(
+          <div>
+            {
+              messages.map((message)=>{
+                return (
+                  <ChatMessage 
+                    message={message.message}
+                    user={message.user}
+                    key={message.id}
+                  />
+                )
+              })
+            }
+            <ChatInput />
+          </div>
+        )
+      }
+      const container = document.querySelector('.js-container');
+      ReactDOM.createRoot(container).render(<App />);
+    </script>
+  </body>
+</html>
