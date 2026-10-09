@@ -19,13 +19,13 @@ body{
   display:flex;
   margin-bottom:60px;
   margin-top:10px;
+  gap:10px;
 }
 .input-box{
   flex-grow:1;
   padding:10px;
   border-radius:10px;
   border-width:1px;
-  margin-right:5px;
 }
 .input-box::placeholder{
   font-size:0.9rem;
@@ -36,6 +36,14 @@ body{
   border:none;
   padding:10px 20px;
   border-radius:10px;
+  font-size:0.9rem;
+}
+.clear-btn{
+  background-color:lightgrey;
+  color:black;
+  border:none;
+  padding:10px 20px;
+  border-radius: 10px;
   font-size:0.9rem;
 }
 .chat-message-user, .chat-message-robot{
