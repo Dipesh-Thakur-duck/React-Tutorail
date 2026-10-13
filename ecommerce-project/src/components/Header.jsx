@@ -1,14 +1,33 @@
-import { NavLink } from 'react-router';
+import { NavLink, useNavigate, useSearchParams } from 'react-router';
 import logoWhite from '../assets/images/logo-white.png';
 import mobileLogoWhite from '../assets/images/mobile-logo-white.png';
 import searchIcon from '../assets/images/icons/search-icon.png';
 import cartIcon from '../assets/images/icons/cart-icon.png';
+import { useState } from 'react';
 import './Header.css';
-export function Header({cart = []}){
+// ...your other imports
+
+export function Header({ cart = [] }) {
+  const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const searchText = searchParams.get('search');
+
+  // 8l: if the URL already has a search, use it as the initial value
+  const [search, setSearch] = useState(searchText || '');
+
   let totalQuantity = 0;
-  cart.forEach((cartItem)=>{
+  cart.forEach((cartItem) => {
     totalQuantity += cartItem.quantity;
   });
+
+  const updateSearchInput = (event) => {
+    setSearch(event.target.value);
+  };
+
+  const searchProducts = () => {
+    navigate(`/?search=${search}`);
+  };
+
   return (
     <div className="header">
       <div className="left-section">
@@ -21,9 +40,15 @@ export function Header({cart = []}){
       </div>
 
       <div className="middle-section">
-        <input className="search-bar" type="text" placeholder="Search" />
+        <input
+          className="search-bar"
+          type="text"
+          placeholder="Search"
+          value={search}
+          onChange={updateSearchInput}
+        />
 
-        <button className="search-button">
+        <button className="search-button" onClick={searchProducts}>
           <img className="search-icon" src={searchIcon} />
         </button>
       </div>
@@ -41,5 +66,8 @@ export function Header({cart = []}){
         </NavLink>
       </div>
     </div>
-  )
+  );
 }
+
+
+      
