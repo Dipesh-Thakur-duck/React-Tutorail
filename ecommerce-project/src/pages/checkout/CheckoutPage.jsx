@@ -17,14 +17,17 @@ export function CheckoutPage({cart, loadCart}){
       setDeliveryOptions(response.data);
     }
     fetchDeliveryDate();
+    
+  },[]);
 
+  useEffect(()=>{
     const fetchPaymentData = async ()=>{
       const response = await axios.get('/api/payment-summary');
       setPaymentSummary(response.data);
     }
     fetchPaymentData();
-    
-  },[cart])
+  },[cart]);
+
   return (
     <>
       <link rel="icon" href="cart-favicon.png" />

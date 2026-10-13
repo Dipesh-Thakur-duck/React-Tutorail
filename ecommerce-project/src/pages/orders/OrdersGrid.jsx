@@ -3,7 +3,10 @@ import { formatMoney } from "../../utils/money";
 import buyAgainIcon from '../../assets/images/icons/buy-again.png';
 import { Fragment } from "react";
 import { Link } from "react-router";
-export function OrdersGrid({order}){
+import axios from 'axios';
+export function OrdersGrid({order, loadCart}){
+  window.axios = axios;
+  const quantity = 1;
   return (
     <div className="order-container" key={order.id}>
     
@@ -43,7 +46,13 @@ export function OrdersGrid({order}){
                 <div className="product-quantity">
                   Quantity: {orderProduct.quantity}
                 </div>
-                <button className="buy-again-button button-primary">
+                <button className="buy-again-button button-primary" onClick={async ()=>{
+                    await axios.post('/api/cart-items',{
+                      productId:orderProduct.product.id,
+                      quantity
+                    });
+                    await loadCart();
+                  }}>
                   <img className="buy-again-icon" src={buyAgainIcon} />
                   <span className="buy-again-message">Add to Cart</span>
                 </button>

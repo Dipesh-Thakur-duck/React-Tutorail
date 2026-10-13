@@ -5,7 +5,7 @@ import {Header} from '../../components/Header';
 import { OrdersGrid } from './OrdersGrid';
 
 
-export function Orders({cart}){
+export function Orders({cart, loadCart}){
   const [orders, setOrders] = useState([]);
   useEffect(()=>{
     const fetchData = async ()=>{
@@ -27,7 +27,7 @@ export function Orders({cart}){
           {
             orders.map((order)=>{
               return(
-                <OrdersGrid order={order} />
+                <OrdersGrid order={order} loadCart={loadCart} />
               );
             })
           }
