@@ -10,4 +10,12 @@ describe('formatMoney', ()=>{
   it('displays 2 decimals', ()=>{
     expect(formatMoney(1090)).toBe('$10.90');
   });
+
+  it('displays $0.00 from 0', ()=>{
+    expect(formatMoney(0)).toBe('$0.00');
+  });
+
+  it('returns null for numbers less than 0', ()=>{
+    expect(formatMoney(-1)).toBe(null);
+  })
 });
