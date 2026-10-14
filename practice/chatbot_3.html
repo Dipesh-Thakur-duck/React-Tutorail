@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./chatbot_3.css">
     <title>Chatbot</title>
   </head>
   <body>
@@ -76,6 +77,10 @@
           setInputText(event.target.value);
         }
 
+        function clearMessages(){
+          setChatMessages([]);
+        }
+
         async function sendMessage(){
           const newMessages = [
             ...chatMessages,
@@ -108,6 +113,7 @@
           <div className="chat-input-container">
             <input placeholder="Send a message to chatbot" onChange={saveInputText} value={inputText} className="input-element" />
             <button onClick={sendMessage} className="send-btn">Send</button>
+            <button className="clear-btn" onClick={clearMessages}>Clear</button>
           </div>
         )
       }
@@ -129,7 +135,7 @@
         return (
           <div className="app-container">
 
-            {chatMessages.length === 0 && 'Welcome to chatbot app! Send a message'}
+            {chatMessages.length === 0 && <p className="welcome-message">Welcome to chatbot app! Send a message</p>}
 
             <ChatMessages 
               chatMessages={chatMessages}
