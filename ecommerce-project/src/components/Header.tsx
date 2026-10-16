@@ -5,9 +5,15 @@ import searchIcon from '../assets/images/icons/search-icon.png';
 import cartIcon from '../assets/images/icons/cart-icon.png';
 import { useState } from 'react';
 import './Header.css';
-// ...your other imports
 
-export function Header({ cart = [] }) {
+
+type HeaderProps = { cart:{
+  productId: string;
+  quantity: number;
+  deliveryOptionId:string;
+}[];}
+
+export function Header({ cart = [] }: HeaderProps) {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const searchText = searchParams.get('search');

@@ -1,8 +1,52 @@
 {
-  "hash": "4ede8e9f",
+  "hash": "ad9bca71",
   "configHash": "84b8328f",
-  "lockfileHash": "e3b0c442",
-  "browserHash": "80f8ae46",
-  "optimized": {},
-  "chunks": {}
+  "lockfileHash": "8c7208dd",
+  "browserHash": "3af0043d",
+  "optimized": {
+    "react/jsx-dev-runtime": {
+      "src": "../../node_modules/react/jsx-dev-runtime.js",
+      "file": "react_jsx-dev-runtime.js",
+      "fileHash": "46913267",
+      "needsInterop": true
+    },
+    "react": {
+      "src": "../../node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "ea19b54f",
+      "needsInterop": true
+    },
+    "react-dom/client": {
+      "src": "../../node_modules/react-dom/client.js",
+      "file": "react-dom_client.js",
+      "fileHash": "b5378ea0",
+      "needsInterop": true
+    },
+    "react-router": {
+      "src": "../../node_modules/react-router/dist/development/index.mjs",
+      "file": "react-router.js",
+      "fileHash": "df101d05",
+      "needsInterop": false
+    },
+    "axios": {
+      "src": "../../node_modules/axios/index.js",
+      "file": "axios.js",
+      "fileHash": "d976c7fc",
+      "needsInterop": false
+    },
+    "dayjs": {
+      "src": "../../node_modules/dayjs/dayjs.min.js",
+      "file": "dayjs.js",
+      "fileHash": "f046899a",
+      "needsInterop": true
+    }
+  },
+  "chunks": {
+    "chunk-ELLFCOGW": {
+      "file": "chunk-ELLFCOGW.js"
+    },
+    "chunk-G3PMV62Z": {
+      "file": "chunk-G3PMV62Z.js"
+    }
+  }
 }
