@@ -1,0 +1,88 @@
+body{
+  margin:0;
+  font-family: Arial;
+}
+p{
+  margin:0;
+}
+.app-container{
+  display:flex;
+  flex-direction: column;
+  height:100vh;
+  width:600px;
+  margin:0 auto;
+  padding-top:10px;
+}
+.messages-container{
+  flex:1;
+}
+.chat-input-container{
+  margin-top:10px;
+  margin-bottom:60px;
+  display:flex;
+  gap:10px;
+}
+.input-field{
+  flex:1;
+  padding:10px;
+  border-width:1px;
+  border-radius:10px;
+}
+.input-field::placeholder{
+  font-size:0.9rem;
+}
+.send-btn{
+  background-color:#198754;
+  color:white;
+  border:none;
+  padding:10px 20px;
+  border-radius:10px;
+  font-size: 0.9rem;
+}
+.clear-btn{
+  background-color:lightgray;
+  border:none;
+  padding:10px 20px;
+  font-size:0.9rem;
+  border-radius:10px;
+  cursor: pointer;
+}
+.messages-container{
+  display:flex;
+  flex-direction: column;
+  overflow: scroll;
+  scrollbar-width:none;
+}
+.user-message{
+  display:flex;
+  align-items:start;
+  align-self:flex-end;
+  gap:10px;
+}
+.robot-message{
+  display:flex;
+  align-items:start;
+  gap:10px;
+}
+.message{
+  display:flex;
+  flex-direction: column;
+  gap:5px;
+  align-self:center;
+  background-color:rgb(238,238,238);
+  padding:15px;
+  border-radius:5px;
+}
+.profile-img{
+  width:45px;
+  border-radius: 50%;
+}
+.spinner-img{
+  width:45px;
+  margin:-15px;
+}
+.message-time{
+  font-size:0.7rem;
+  color:gray;
+  align-self:flex-end;
+}
