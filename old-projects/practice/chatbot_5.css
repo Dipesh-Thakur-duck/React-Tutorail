@@ -1,0 +1,80 @@
+body{
+  margin:0;
+  font-family: Arial;
+}
+.app-container{
+  width:600px;
+  height:100vh;
+  margin:0 auto;
+  display:flex;
+  flex-direction:column;
+}
+.welcome-message{
+  align-self: center;
+}
+.chat-messages-container{
+  padding-top:10px;
+  flex:1;
+  overflow:scroll;
+  scrollbar-width: none;
+  display:flex;
+  flex-direction: column;
+}
+.chat-input-container{
+  margin-top:10px;
+  margin-bottom:60px;
+  display:flex;
+  gap:10px;
+}
+.input-field{
+  flex:1;
+  padding:10px;
+}
+.input-field::placeholder{
+  font-size:0.9rem;
+}
+.send-btn{
+  background-color:#198754;
+  color:white;
+  border:none;
+  font-size:0.9rem;
+  padding:10px 20px;
+  border-radius:10px;
+}
+.clear-btn{
+  background-color:lightgray;
+  border:none;
+  font-size:0.9rem;
+  padding:10px 20px;
+  border-radius: 10px;
+}
+.user-message, .robot-message{
+  display:flex;
+  gap:10px;
+}
+.user-message{
+  justify-content: end;
+}
+.message{
+  background-color:rgb(238,238,238);
+  padding:15px;
+  margin:0;
+  border-radius:10px;
+  display:flex;
+  flex-direction: column;
+  gap:10px;
+}
+.profile-img{
+  width:45px;
+  border-radius: 50%;
+  align-self: flex-start;
+}
+.spinner-img{
+  width:45px;
+  margin:-15px;
+}
+.message-time{
+  font-size:0.7rem;
+  color:gray;
+  align-self:flex-end;
+}

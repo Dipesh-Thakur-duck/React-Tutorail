@@ -1,0 +1,11 @@
+.chat-messages-container{
+  flex:1;
+  overflow:scroll;
+  scrollbar-width: none;
+  display:flex;
+  flex-direction: column;
+}
+.spinner-img{
+  margin:-15px;
+  width:45px; 
+}

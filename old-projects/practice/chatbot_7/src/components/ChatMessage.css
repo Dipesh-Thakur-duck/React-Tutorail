@@ -1,0 +1,24 @@
+.user-message, .robot-message{
+  display:flex;
+  gap:10px;
+}
+.user-message{
+  align-self:flex-end;
+}
+.profile-img{
+  width:45px;
+  align-self: flex-start;
+}
+.message{
+  display:flex;
+  flex-direction: column;
+  gap:10px;
+  background-color:rgb(238,238, 238);
+  padding:15px;
+  border-radius: 10px;
+}
+.message-time{
+  color:gray;
+  font-size:0.7rem;
+  align-self:flex-end;
+}

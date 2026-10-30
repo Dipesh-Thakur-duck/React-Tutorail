@@ -1,0 +1,11 @@
+.app-container{
+  padding-top:10px;
+  width:600px;
+  height:100vh;
+  display:flex;
+  flex-direction: column;
+  margin:0 auto;
+}
+.welcome-msg{
+  align-self:center;
+}
